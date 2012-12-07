@@ -62,6 +62,10 @@ interface IPortletContext {
 	function getPortletData($name=NULL);
 
 	function setPortletData($name, $value);
+	
+	function getPortletSetting($name=NULL);
+	
+	function setPortletSetting($name, $value);
 
 	/**
 	 * @param string $portletID
