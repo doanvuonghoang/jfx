@@ -9,11 +9,6 @@ namespace lib\jf\portlet;
 interface IPortlet {
 
 	/**
-	 * Get id of portlet instance.
-	 */
-	function getPortletID();
-
-	/**
 	 * @param IPortletContext $ctx
 	 */
 	function init(IPortletContext $ctx);

@@ -22,13 +22,6 @@ class Portlet implements IPortlet {
 	function __construct(IPortletConfig $cfg) {
 		$this->config = $cfg;
 	}
-	
-	/**
-	 * Get id of portlet instance.
-	 */
-	function getPortletID() {
-		return $this->context->getPortletID();
-	}
 
 	/**
 	 * @param IPortletContext $ctx
