@@ -83,7 +83,7 @@ class Portlet implements IPortlet {
 		
 		$compiled = array();
 		foreach($data['fields'] as $key => $value) {
-			$value = 'render_'.$value;
+			$value = 'fetch_'.$value;
 			$compiled[$key] = $this->$value();
 		}
 		
