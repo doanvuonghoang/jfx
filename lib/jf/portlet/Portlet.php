@@ -28,7 +28,7 @@ class Portlet implements IPortlet {
 	 */
 	function init(IPortletContext $ctx) {
 		$this->context = $ctx;
-		$this->__fireEvent(new PortletEvent($this, 'portlet_inited'));
+		$this->__processEvent(new PortletEvent($this, 'portlet_inited'));
 		$this->__processAfterInited();
 	}
 	
@@ -44,20 +44,24 @@ class Portlet implements IPortlet {
 	function processAction() {
 		$this->__processBeforeAction();
 		
-		$action = 'action_'.$this->context->getAction();
-		$this->$action();
+		$this->__doAction();
 		
 		$this->__processAfterAction();
 	}
 	
+	protected function __doAction() {
+		$action = 'action_'.$this->context->getAction();
+		$this->$action();
+	}
+	
 	protected function __processBeforeAction() {
-		$this->__fireEvent(new PortletEvent($this, 'portlet_beforeAction'));
+		$this->__processEvent(new PortletEvent($this, 'portlet_beforeAction'));
 	}
 	
 	protected function __processAfterAction() {
 		$this->render = $this->config->getActionMap($action);
 
-		$this->__fireEvent(new PortletEvent($this, 'portlet_afterAction'));
+		$this->__processEvent(new PortletEvent($this, 'portlet_afterAction'));
 	}
 
 	/**
@@ -66,6 +70,12 @@ class Portlet implements IPortlet {
 	function render() {
 		$this->__processBeforeRender();
 		
+		$this->__doRender();
+		
+		$this->__processAfterRender();
+	}
+	
+	protected function __doRender() {
 		$data = $this->config->getRenderMap($this->render);
 		
 		if($data == NULL) return NULL;
@@ -77,20 +87,18 @@ class Portlet implements IPortlet {
 		}
 		
 		$this->context->getRenderer()->flush($compiled, $data['tpl']);
-		
-		$this->__processAfterRender();
 	}
 	
 	protected function __processBeforeRender() {
-		$this->__fireEvent(new PortletEvent($this, 'portlet_beforeRender'));
+		$this->__processEvent(new PortletEvent($this, 'portlet_beforeRender'));
 		if($this->render == NULL) $this->render = 'default';
 	}
 	
 	protected function __processAfterRender() {
-		$this->__fireEvent(new PortletEvent($this, 'portlet_afterRender'));
+		$this->__processEvent(new PortletEvent($this, 'portlet_afterRender'));
 	}
 	
-	protected function __fireEvent(PortletEvent $e) {
+	protected function __processEvent(PortletEvent $e) {
 		try {
 			$svc = jf_Context::getContext()->getService('jf/event');
 
