@@ -17,7 +17,7 @@ class Portlet implements IPortlet {
 	 */
 	private $config;
 	
-	private $render;
+	protected $render;
 	
 	function __construct(IPortletConfig $cfg) {
 		$this->config = $cfg;
