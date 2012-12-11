@@ -29,10 +29,10 @@ class Portlet implements IPortlet {
 	function init(IPortletContext $ctx) {
 		$this->context = $ctx;
 		$this->__fireEvent(new PortletEvent($this, 'portlet_inited'));
-		$this->__checkRunConditional();
+		$this->__processAfterInited();
 	}
 	
-	protected function __checkRunConditional() {
+	protected function __processAfterInited() {
 		if(!in_array($this->context->getContentType(), $this->config->getSupportedContentTypes()) ||
 				!in_array($this->context->getLocale(), $this->config->getSupportedLocales()))
 			throw new \Exception();
@@ -42,13 +42,21 @@ class Portlet implements IPortlet {
 	 * Process action.
 	 */
 	function processAction() {
-		$this->__fireEvent(new PortletEvent($this, 'portlet_beforeAction'));
-		$action = 'action_'.$this->context->getAction();
+		$this->__processBeforeAction();
 		
+		$action = 'action_'.$this->context->getAction();
 		$this->$action();
 		
+		$this->__processAfterAction();
+	}
+	
+	protected function __processBeforeAction() {
+		$this->__fireEvent(new PortletEvent($this, 'portlet_beforeAction'));
+	}
+	
+	protected function __processAfterAction() {
 		$this->render = $this->config->getActionMap($action);
-		
+
 		$this->__fireEvent(new PortletEvent($this, 'portlet_afterAction'));
 	}
 
@@ -56,14 +64,12 @@ class Portlet implements IPortlet {
 	 * Render portlet.
 	 */
 	function render() {
-		$this->__fireEvent(new PortletEvent($this, 'portlet_beforeRender'));
-		if($this->render == NULL) $this->render = 'default';
+		$this->__processBeforeRender();
 		
 		$data = $this->config->getRenderMap($this->render);
 		
 		if($data == NULL) return NULL;
 		
-		//
 		$compiled = array();
 		foreach($data['fields'] as $key => $value) {
 			$value = 'render_'.$value;
@@ -72,6 +78,15 @@ class Portlet implements IPortlet {
 		
 		$this->context->getRenderer()->flush($compiled, $data['tpl']);
 		
+		$this->__processAfterRender();
+	}
+	
+	protected function __processBeforeRender() {
+		$this->__fireEvent(new PortletEvent($this, 'portlet_beforeRender'));
+		if($this->render == NULL) $this->render = 'default';
+	}
+	
+	protected function __processAfterRender() {
 		$this->__fireEvent(new PortletEvent($this, 'portlet_afterRender'));
 	}
 	
