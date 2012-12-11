@@ -35,6 +35,7 @@ class Portlet implements IPortlet {
 	protected function __processAfterInited() {
 		if(!in_array($this->context->getContentType(), $this->config->getSupportedContentTypes()) ||
 				!in_array($this->context->getLocale(), $this->config->getSupportedLocales()))
+				// @TODO: fix this
 			throw new \Exception();
 	}
 
