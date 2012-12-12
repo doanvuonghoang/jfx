@@ -116,12 +116,16 @@ final class Context {
 	}
 	
 	// @TODO: Region of extensions
-	function getExtensionConfigPath($extName) {
+	function getExtensionPath($extName) {
 		return self::$PATH_EXTS."/$extName";
 	}
 	
 	function getExtensionConfigFile($extName) {
-		return $this->getExtensionConfigPath($extName).'/ext.cnf.php';
+		return $this->getExtensionPath($extName).'/ext.cnf.php';
+	}
+	
+	function getExtensionDefFile($extName) {
+		return $this->getExtensionPath($extName).'/ext.def.php';
 	}
 	
 	function isExtensionExists($extName) {
@@ -133,12 +137,25 @@ final class Context {
 		return $extFile;
 	}
 	
+	/**
+	 * @param string $extName
+	 * @return IConfiguration
+	 * @throws NoExtensionException
+	 */
 	function getExtensionConfiguration($extName) {
 		$extFile = $this->isExtensionExists($extName);
 		if($extFile===FALSE) {
 			throw new NoExtensionException($extName, $extFile);
 		}
 		return ArrayConfiguration::loadFromFile($extFile);
+	}
+	
+	/**
+	 * @param string $extName
+	 * @return IConfiguration
+	 */
+	function getExtensionDefinition($extName) {
+		return ArrayConfiguration::loadFromFile($this->getExtensionDefFile($extName));
 	}
 	
 	function packageExtension($extName, $dest) {
@@ -150,9 +167,9 @@ final class Context {
 			$zip->setArchiveComment('CREATED BY JFX FRAMEWORK 2.0 - DO NOT EDIT THIS ARCHIVE!');
 			$zip->addFromString('.manifest', $extName);
 			// get ext path
-			$extPath = $this->getExtensionConfigPath($extName);
+			$extPath = $this->getExtensionPath($extName);
 			// add config file
-			$zip->addFile("$extPath/ext.cnf.php", "$extName/ext.cnf.php");
+			$zip->addFile("$extPath/ext.def.php", "$extName/ext.def.php");
 			
 			// add source code of extension
 			foreach($cfg->getValue('srcs', array()) as $filename) {
@@ -182,7 +199,7 @@ final class Context {
 				throw new \Exception('invalid package');
 
 			// get ext path
-			$extPath = $this->getExtensionConfigPath ($extName);
+			$extPath = $this->getExtensionPath ($extName);
 			// check if extension has already existed or not
 			// if existed
 			if($this->isExtensionExists($extName) !== FALSE) {
@@ -209,7 +226,7 @@ final class Context {
 
 	function uninstallExtension($extName, $deleteSource = false, $dbkey='default') {
 		$cfg = $this->getExtensionConfiguration($extName);
-		$extPath = $this->getExtensionConfigPath($extName);
+		$extPath = $this->getExtensionPath($extName);
 
 		$dbs = $this->getService('jf/database');
 		if (is_a($dbs, 'services\jf\database\DatabaseService')) {
