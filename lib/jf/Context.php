@@ -225,7 +225,7 @@ final class Context {
 	}
 
 	function uninstallExtension($extName, $deleteSource = false, $dbkey='default') {
-		$cfg = $this->getExtensionConfiguration($extName);
+		$cfg = $this->getExtensionDefinition($extName);
 		$extPath = $this->getExtensionPath($extName);
 
 		$dbs = $this->getService('jf/database');
