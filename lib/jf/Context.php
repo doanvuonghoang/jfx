@@ -213,7 +213,7 @@ final class Context {
 			rename($tmpdir."/$extName", $extPath);
 			
 			// Secondly, execute install scripts
-			$cfg = $this->getExtensionConfiguration($extName);
+			$cfg = $this->getExtensionDefinition($extName);
 			// get database service
 			$dbs = $this->getService('jf/database');
 			if(is_a($dbs, 'services\jf\database\DatabaseService')) {
