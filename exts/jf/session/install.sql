@@ -1,4 +1,4 @@
-CREATE  TABLE IF NOT EXISTS `session` (
+CREATE  TABLE IF NOT EXISTS `%TABLE_NAME%` (
   `sid` VARCHAR(255) NOT NULL ,
   `last_actived_request` VARCHAR(255) NULL ,
   `last_actived_time` DATETIME NULL ,

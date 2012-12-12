@@ -3,8 +3,13 @@
 $config = array(
 	'srcs'		=> array(
 		'MySQLSessionDP.php',
-		'install.sql',
-		'uninstall.sql'
+	),
+	'config'	=> array(
+		'TABLE_NAME' => array(
+			'default'	=> 'session',
+			'type'		=> 'string',
+			'desc'		=> 'name of table'
+		),
 	),
 	'install_scripts'	=> array(
 		'install.sql'
