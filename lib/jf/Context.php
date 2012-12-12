@@ -147,7 +147,7 @@ final class Context {
 		
 		if($zip->open($dest.'/'.str_replace('/', '.', $extName).'.zip', \ZIPARCHIVE::CREATE | \ZIPARCHIVE::OVERWRITE) === TRUE) {
 			// add manifest info
-			$zip->setArchiveComment('CREATED AUTOMATICALLY BY JFX FRAMEWORK 2.0 - DO NOT EDIT THIS ARCHIVE!');
+			$zip->setArchiveComment('CREATED BY JFX FRAMEWORK 2.0 - DO NOT EDIT THIS ARCHIVE!');
 			$zip->addFromString('.manifest', $extName);
 			// get ext path
 			$extPath = $this->getExtensionConfigPath($extName);
