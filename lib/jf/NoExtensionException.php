@@ -6,7 +6,7 @@ class NoExtensionException extends \Exception {
 	protected $extf;
 
 	function __construct($extName, $extf) {
-		parent::__construct("Service not found: '$extName' => '$extf'");
+		parent::__construct("Extension not found: '$extName' => '$extf'");
 
 		$this->extName = $extName;
 		$this->extf = $extf;
