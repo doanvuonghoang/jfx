@@ -1,16 +1,21 @@
 <?php
 
 $config = array(
-	'srcs'		=> array(
-		'MySQLSessionDP.php',
-		'install.sql',
-		'uninstall.sql'
+	'params'	=> array(
+		'PREFIX_TABLE_NAME' => array(
+			'default'	=> '',
+			'type'		=> 'string'
+		),
+		
+		'SUBFIX_TABLE_NAME' => array(
+			'default' => '',
+			'type'		=> 'string'
+		),
+		
+		'TABLE_NAME' => array(
+			'default' => 'session',
+			'type'		=> 'string'
+		),
 	),
-	'install_scripts'	=> array(
-		'install.sql'
-	),
-	'uninstall_scripts'	=> array(
-		'uninstall.sql'
-	)
 );
 ?>
