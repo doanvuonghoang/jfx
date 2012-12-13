@@ -55,13 +55,13 @@ interface IPortletContext {
 	 * @param string $name session data key name
 	 * @param string $scope 'portlet' | NULL
 	 */
-	function getSessionData($name, $scope = 'portlet');
+	function getSession($name, $scope = 'portlet');
 
-	function setSessionData($name, $value, $scope = 'portlet');
+	function setSession($name, $value, $scope = 'portlet');
 	
-	function getPortletData($name=NULL);
+	function getPortletVariable($name=NULL);
 
-	function setPortletData($name, $value);
+	function setPortletVariable($name, $value);
 	
 	function getPortletSetting($name=NULL);
 	

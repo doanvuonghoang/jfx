@@ -81,6 +81,7 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 	 */
 	function createURL($app = null, $query = null, $keep_get=array()) {
 		if (is_null($app)) $app = $this->getRequestedApp();
+		$q = ($app == '') ? '' : "{$this->keyapp}=$app";
 		
 		$params = array();
 		if (!is_array($query)) {
@@ -92,7 +93,6 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 		}
 		$params = http_build_query($params);
 
-		$q = ($app == '') ? '' : "{$this->keyApp}=$app";
 		$q .= ($params == '') ? '' : ( (($q == '') ? '' : '&').$params );
 		$q = ($q == '') ? '/' : "?$q";
 		return $q;
@@ -105,6 +105,42 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 	function isAjaxRequest() {
 		return isset($_SERVER['HTTP_X_REQUESTED_WITH']) || isset($_REQUEST['force_ajax']);
 	}
+	
+	function getStaticResource($resName) {}
+
+	function getRelativeResource($resName) {}
+	
+	/**
+	 * @param string $locale
+	 * @return IPortletBundles
+	 */
+	function getBundles($locale = NULL) {
+		
+	}
+	
+	function getContentType() {}
+
+	function getLocale() {}
+	
+	function getTheme() {}
+	
+	/**
+	 * Return mode of user requested.
+	 * @return string VIEW | EDIT | DESIGN
+	 */
+	function getMode() {}
+	
+	/**
+	 * @param string $name session data key name
+	 * @param string $scope 'app' | NULL
+	 */
+	function getSession($name, $scope = 'app') {}
+
+	function setSession($name, $value, $scope = 'app') {}
+	
+	function getAppSetting($name=NULL) {}
+	
+	function setAppSetting($name, $value) {}
 
 }
 

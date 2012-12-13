@@ -41,6 +41,40 @@ interface IAppContext {
 	 * @return bool
 	 */
 	function isAjaxRequest();
+	
+	function getStaticResource($resName);
+
+	function getRelativeResource($resName);
+	
+	/**
+	 * @param string $locale
+	 * @return IAppBundles
+	 */
+	function getBundles($locale = NULL);
+	
+	function getContentType();
+
+	function getLocale();
+	
+	function getTheme();
+	
+	/**
+	 * Return mode of user requested.
+	 * @return string VIEW | EDIT | DESIGN
+	 */
+	function getMode();
+	
+	/**
+	 * @param string $name session data key name
+	 * @param string $scope 'app' | NULL
+	 */
+	function getSession($name, $scope = 'app');
+
+	function setSession($name, $value, $scope = 'app');
+	
+	function getAppSetting($name=NULL);
+	
+	function setAppSetting($name, $value);
 }
 
 ?>

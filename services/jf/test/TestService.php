@@ -11,8 +11,8 @@ class TestService extends \lib\jf\core\BaseService {
 		$c = \lib\jf\Context::getContext();
 		
 		//$c->packageExtension('jf/session', PATH_BASE.'/tmp');
-		$extPkgFile = PATH_BASE.'/tmp/jf.session.zip';
-		$c->installExtension($extPkgFile, true);
+//		$extPkgFile = PATH_BASE.'/tmp/jf.session.zip';
+//		$c->installExtension($extPkgFile, true);
 //		$c->uninstallExtension('jf/session', true);
 	}
 
