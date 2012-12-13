@@ -115,34 +115,6 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 	}
 	
 	/**
-	 * @param string $locale
-	 * @return IAppBundles
-	 */
-	function getBundles($locale = NULL) {
-		
-	}
-	
-	function getContentType() {
-		
-	}
-
-	function getLocale() {
-		
-	}
-	
-	function getTheme() {
-		
-	}
-	
-	/**
-	 * Return mode of user requested.
-	 * @return string VIEW | EDIT | DESIGN
-	 */
-	function getMode() {
-		
-	}
-	
-	/**
 	 * @param string $name session data key name
 	 * @param string $scope 'app' | NULL
 	 */
@@ -156,14 +128,6 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 		$_SESSION[$key] = $value;
 	}
 	
-	function getAppSetting($name=NULL) {
-		
-	}
-	
-	function setAppSetting($name, $value) {
-		
-	}
-
 }
 
 ?>
