@@ -106,41 +106,63 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 		return isset($_SERVER['HTTP_X_REQUESTED_WITH']) || isset($_REQUEST['force_ajax']);
 	}
 	
-	function getStaticResource($resName) {}
+	function getStaticResource($resName) {
+		
+	}
 
-	function getRelativeResource($resName) {}
+	function getRelativeResource($resName) {
+		
+	}
 	
 	/**
 	 * @param string $locale
-	 * @return IPortletBundles
+	 * @return IAppBundles
 	 */
 	function getBundles($locale = NULL) {
 		
 	}
 	
-	function getContentType() {}
+	function getContentType() {
+		
+	}
 
-	function getLocale() {}
+	function getLocale() {
+		
+	}
 	
-	function getTheme() {}
+	function getTheme() {
+		
+	}
 	
 	/**
 	 * Return mode of user requested.
 	 * @return string VIEW | EDIT | DESIGN
 	 */
-	function getMode() {}
+	function getMode() {
+		
+	}
 	
 	/**
 	 * @param string $name session data key name
 	 * @param string $scope 'app' | NULL
 	 */
-	function getSession($name, $scope = 'app') {}
+	function getSession($name, $scope = 'app') {
+		$key = ($scope == 'app') ? "app:{$this->getRequestedApp()}:$name" : $name;
+		return isset($_SESSION[$key]) ? $_SESSION[$key] : NULL;
+	}
 
-	function setSession($name, $value, $scope = 'app') {}
+	function setSession($name, $value, $scope = 'app') {
+		$key = ($scope == 'app') ? "app:{$this->getRequestedApp()}:$name" : $name;
+		$_SESSION[$key] = $value;
+	}
 	
-	function getAppSetting($name=NULL) {}
+	function getAppSetting($name=NULL) {
+		
+	}
 	
-	function setAppSetting($name, $value) {}
+	function setAppSetting($name, $value) {
+		
+	}
 
 }
 
