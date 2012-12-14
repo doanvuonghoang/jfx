@@ -3,7 +3,7 @@
 $config = array(
 	// Start up services.
 	'startUpServices' => array(
-		'jf/exception', 'jf/session', 'jf/ipfilter', 'jf/database', 'jf/test'
+		'jf/exception', 'jf/session', 'jf/ipfilter', 'jf/database', 'jf/router'
 	),
 	// session configs
 	'session' => array(
@@ -29,6 +29,10 @@ $config = array(
 			'password' => 'db01',
 			'options'  => array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION)
 		),
+	),
+	// default app to run
+	'routerSettings' => array(
+		'default_app' => 'default',
 	),
 );
 ?>
