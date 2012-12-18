@@ -34,5 +34,9 @@ $config = array(
 	'routerSettings' => array(
 		'default_app' => 'default',
 	),
+	// app settings
+	'appContextSettings' => array(
+		'keyapp' => 'app'
+	),
 );
 ?>
