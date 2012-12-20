@@ -32,7 +32,7 @@ $config = array(
 	),
 	// router settings
 	'routerSettings' => array(
-		'rewrite_mod' => 1,
+		'rewrite_mod' => 0,
 		'rewrite_mod_provider' => '\\lib\\jf\\rewrite_mod\\ApacheProvider',
 		'app_default' => 'default',
 		'app_aliases' => array(
