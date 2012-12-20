@@ -49,7 +49,7 @@ class JFApp {
 	
 	function start() {
 		echo '<pre>' . print_r($this->responseType, true) . '</pre>';
-		echo "<img src='{$this->ac->createStaticResourceURL('/imgs/404.jpg')}' />";
+		echo "<img src='{$this->ac->createRelativeResourceURL('/imgs/404.jpg')}' />";
 	}
 }
 
