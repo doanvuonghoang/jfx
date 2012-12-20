@@ -5,17 +5,19 @@ namespace lib\jf\app;
  * @author Hoàng
  */
 interface IResourceManager {
-	function getStaticResourceURL($resName);
+	function createStaticResourceURL($resName, $appName=null);
 
-	function getRelativeResourceURL($resName);
+	function createRelativeResourceURL($resName, $appName=null);
 	
 	/**
 	 * @desc Generates URL for an application.
+	 * @param string $path		uri path
 	 * @param mixed $query		can be query string or array
-	 * @param array $keep_get	parameters in request string to keep
+	 * @param string $protocol	'http' | 'https' | 'ftp'
+	 * @param string $host		host name
 	 * @return string
 	 */
-	function createURL($query = null, $keep_get=array());
+	function createURL($path='', $query = null, $protocol=null, $host=null);
 }
 
 ?>

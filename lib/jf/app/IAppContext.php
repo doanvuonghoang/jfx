@@ -5,9 +5,7 @@ namespace lib\jf\app;
  *
  * @author Hoàng
  */
-interface IAppContext {
-	function getAppName();
-	
+interface IAppContext extends IResourceManager {
 	/**
 	 * @desc Returns value of parameter that is in application context.
 	 * @param string $name
@@ -28,15 +26,6 @@ interface IAppContext {
 	 * @param mixed $value		if value is NULL, removes parameter
 	 */
 	function setParameter($name, $value=null);
-
-	/**
-	 * @desc Generates URL for an application.
-	 * @param string $app		app name. If is NULL, returns URL of current requested application
-	 * @param mixed $query		can be query string or array
-	 * @param array $keep_get	parameters in request string to keep
-	 * @return string
-	 */
-	function createURL($app = null, $query = null, $keep_get=array());
 
 	/**
 	 * Returns TRUE if this is ajax request.
