@@ -11,11 +11,13 @@ class ApacheProvider implements IRewriteModProvider {
 	private $urlCfg;
 	private $urlCfgFileName;
 	private $htAccessPath;
+	private $changed;
 	
 	function __construct() {
 		$this->htAccessPath = dirname($_SERVER['SCRIPT_FILENAME']);
 		$this->urlCfgFileName = PATH_CONFIG.'/url.cnf.php';
 		$this->urlCfg = \lib\jf\core\ArrayConfiguration::loadFromFile($this->urlCfgFileName);
+		$this->changed = false;
 	}
 	
 	public function rewrite($expr) {
@@ -26,20 +28,28 @@ class ApacheProvider implements IRewriteModProvider {
 		
 	}
 	
-	function addRule($ruleKey, $rule) {
+	function addRule($rule) {
+		$this->changed = true;
+		
 		
 	}
 	
 	function removeRule($ruleKey) {
+		$this->changed = true;
 		
+		unset($this->urlCfg[$ruleKey]);
 	}
 	
 	function disableRule($ruleKey) {
+		$this->changed = true;
 		
+		$this->urlCfg->setValue("$ruleKey/enabled", 0);
 	}
 	
 	function enableRule($ruleKey) {
+		$this->changed = true;
 		
+		$this->urlCfg->setValue("$ruleKey/enabled", 1);
 	}
 	
 }
