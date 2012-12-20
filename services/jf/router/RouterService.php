@@ -14,10 +14,17 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 	
 	private $requestedApp;
 	
+	private $rewriteModEnabled;
+	/**
+	 * @var \lib\jf\rewrite_mod\IRewriteModProvider
+	 */
+	private $rewriteModProvider;
+	
 	protected function __init() {
 		$this->context = \lib\jf\Context::getContext();
 		$this->keyapp = $this->cfg->getValue('keyapp');
 		$this->requestedApp = isset($_REQUEST[$this->keyapp]) ? $_REQUEST[$this->keyapp] : $this->context->getConfiguration()->getValue('routerSettings/app_default');
+		$this->rewriteModEnabled = $this->context->getConfiguration()->getValue('routerSettings/rewrite_mod');
 	
 		$this->__route();
 	}
@@ -32,6 +39,14 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 	
 	protected function getRealAppName($appName) {
 		return $this->context->getConfiguration()->getValue('routerSettings/app_aliases/'.$appName);
+	}
+	
+	protected function getRewriteModProvider() {
+		if($this->rewriteModEnabled == 1 && $this->rewriteModProvider != null) {
+			$this->rewriteModProvider = createInstance($this->context->getConfiguration()->getValue('routerSettings/rewrite_mod_provider'), 'lib\\jf\\rewrite_mod\\IRewriteModProvider');
+		}
+		
+		return $this->rewriteModProvider;
 	}
 
 	protected function __route() {
@@ -117,10 +132,8 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 		
 		//TODO: Before return, url could be retranslated. This might be helpful
 		// for SEO.
-		if($this->context->getConfiguration()->getValue('routerSettings/rewrite_mod') == 1) {
-			$inst = createInstance($this->context->getConfiguration()->getValue('routerSettings/rewrite_mod_provider'), 'lib\\jf\\rewrite_mod\\IRewriteModProvider');
-			
-			$path = $inst->rewrite($path);
+		if($this->rewriteModProvider != null) {
+			$path = $this->rewriteModProvider->rewrite($path);
 		}
 		return ($full === true) ? "$protocol://$host$path" : $path;
 	}
