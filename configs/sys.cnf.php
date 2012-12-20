@@ -33,7 +33,7 @@ $config = array(
 	// default app to run
 	'routerSettings' => array(
 		'rewrite_mod' => 1,
-		'rewrite_mod_provider' => 'lib\\jf\\rewrite_mod\\ApacheProvider',
+		'rewrite_mod_provider' => '\\lib\\jf\\rewrite_mod\\ApacheProvider',
 		'app_default' => 'default',
 		'app_aliases' => array(
 			'admin'		=> 'admin',
