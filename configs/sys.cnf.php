@@ -30,7 +30,7 @@ $config = array(
 			'options'  => array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION)
 		),
 	),
-	// default app to run
+	// router settings
 	'routerSettings' => array(
 		'rewrite_mod' => 1,
 		'rewrite_mod_provider' => '\\lib\\jf\\rewrite_mod\\ApacheProvider',
