@@ -5,7 +5,7 @@ class IPFilterException extends \Exception {
 	protected $remoteIP;
 
 	function __construct($remoteIP) {
-		parent::__construct("Remote IP '$remoteIP' was not accessible to application.");
+		parent::__construct("Remote IP '$remoteIP' was blocked by IPFilter service.");
 
 		$this->remoteIP = $remoteIP;
 	}
