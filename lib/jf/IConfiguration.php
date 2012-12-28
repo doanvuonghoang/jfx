@@ -11,9 +11,10 @@ interface IConfiguration extends \ArrayAccess, \Iterator {
 	 * @desc Gets value of a key in configuration.
 	 * @param string $key			key
 	 * @param mixed $default		value returned when not found key
+	 * @param mixed $ec				if not NULL throws exception
 	 * @return mixed the value of key
 	 */
-	function getValue($key, $default=null);
+	function getValue($key, $default=null, $ec=null);
 
 	/**
 	 * @desc Sets value for a key.

@@ -23,10 +23,11 @@ class ArrayConfiguration extends \ArrayIterator implements IConfiguration {
 	 * Key is a path to access configuration data.
 	 * @param string $key			key
 	 * @param mixed $default		value returned when not found key
+	 * @param mixed $ec
 	 * @return mixed the value of key
 	 */
-	public function getValue($key, $default=null) {
-		return Toolkit::array_read($this, $key, $default);
+	public function getValue($key, $default=null, $ec=null) {
+		return Toolkit::array_read($this, $key, $default, $ec);
 	}
 
 	/**

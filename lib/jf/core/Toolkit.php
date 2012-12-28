@@ -89,9 +89,10 @@ class Toolkit {
 	 * @param array $array			array to read
 	 * @param string $path			path to key to read
 	 * @param mixed $defaultValue	default value used to return if path is not found in array
+	 * @param mixed $ec				if not NULL throws exception
 	 * @return mixed	value of path
 	 */
-	static function &array_read(&$array, $path, $defaultValue) {
+	static function &array_read(&$array, $path, $defaultValue, $ec=null) {
 		$path = trim($path);
 		if($path == '/') return $array;
 		$queue = explode('/', $path);
@@ -101,7 +102,10 @@ class Toolkit {
 		while(!empty($queue)) {
 			$_key = trim(array_shift($queue));
 			if(array_key_exists($_key, $temp)) $temp = &$temp[$_key];
-			else return $defaultValue;
+			else {
+				if(is_null($ec)) return $defaultValue;
+				throw new BaseException("element '$path' not found", $ec);
+			}
 		}
 
 		return $temp;
