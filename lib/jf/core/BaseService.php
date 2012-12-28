@@ -29,7 +29,7 @@ abstract class BaseService implements IService {
 	}
 
 	/**
-	 * Called after init(). Can be overwrited by subclasses to customize their initialization.
+	 * Called after init(). Can be overwritten by subclasses to customize their initialization.
 	 */
 	protected abstract function __init();
 	
