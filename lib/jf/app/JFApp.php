@@ -24,11 +24,7 @@ class JFApp {
 	}
 	
 	function start() {
-//		phpinfo();
-//		echo "<img src='{$this->ac->createRelativeResourceURL('/images/404.jpg')}' />";
-		$inst = \NumberFormatter::create('vi_VN', \NumberFormatter::SPELLOUT);
-		
-		echo $inst->format(11329, \NumberFormatter::TYPE_DEFAULT);
+		echo 'Hello world!';
 	}
 }
 

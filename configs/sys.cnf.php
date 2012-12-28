@@ -3,7 +3,7 @@
 $config = array(
 	// Start up services.
 	'startUpServices' => array(
-		'jf/exception', 'jf/session', 'jf/ipfilter', 'jf/database', 'jf/router'
+		'jf/exception', 'jf/session', 'jf/ipfilter', 'jf/router'
 	),
 	// session configs
 	'session' => array(
