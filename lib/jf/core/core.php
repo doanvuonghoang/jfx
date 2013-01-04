@@ -97,12 +97,8 @@ function handleError($errno, $errstr, $errfile, $errline) {
 	throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
 }
 
-function autoloadClasses($class_name) {
-	import($class_name);
-}
-
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 set_exception_handler('handleException');
 set_error_handler('handleError', E_ALL);
-spl_autoload_register('autoloadClasses', true, true);
+spl_autoload_register('import', true, true);
 ?>

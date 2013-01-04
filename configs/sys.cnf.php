@@ -38,6 +38,8 @@ $config = array(
 		'app_aliases' => array(
 			'admin'		=> 'admin',
 			'backend'	=> 'admin',
+			'reports'	=> 'reports',
+			'test'		=> 'Symfony',
 		),
 		'app_resource_path'	=> array(
 			'static'	=> '/resources',

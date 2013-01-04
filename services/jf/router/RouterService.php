@@ -58,9 +58,10 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 			require PATH_APP."/error/404.php";
 		} else {
 			if($isres == 1) {
-//				echo '<pre>' . print_r($ep, true) . '</pre>'; die;
 				$this->getResourceContent($ep);
-			} else require $ep;
+			} else {
+				require $ep;
+			}
 		}
 	}
 	
