@@ -1,5 +1,5 @@
 <?php
-define('MODE_DEBUG', 'ON');
+define('DEBUG', 'ON');
 
 require 'lib/jf/core/core.php';
 
