@@ -1,11 +1,31 @@
 <?php
 /**
+ * Define platform version.
+ */
+define('PLATFORM_VERSION', '2.0');
+/**
+ * Define path to base directory of platform.
+ */
+define('PATH_BASE', realpath(__DIR__.'/../../..'));
+/**
+* Defines app path.
+*/
+define('PATH_APP', realpath(PATH_BASE.'/apps'));
+/**
+ * Define path to config directory
+ */
+define('PATH_CONFIG', realpath(PATH_BASE.'/configs'));
+/**
+ * Define path to temporary directory of platform.
+ */
+define('PATH_TMP', PATH_BASE.'/tmp');
+
+/**
  * @desc Requires source code in file.
  * If $file is not set, this does nothing. Otherwise, requires the $file.
  * @param string $className		class name
  */
 function import($className) {
-	if($className == NULL) return;
 	require_once PATH_BASE.DIRECTORY_SEPARATOR.str_replace('\\', DIRECTORY_SEPARATOR, $className).'.php';
 }
 

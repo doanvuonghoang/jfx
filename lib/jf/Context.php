@@ -1,8 +1,6 @@
 <?php
 namespace lib\jf;
 
-require 'core/core.php';
-
 use lib\jf\core\ArrayConfiguration;
 use lib\jf\NoServiceException;
 use lib\jf\NoExtensionException;
