@@ -1,7 +1,7 @@
 <?php
 define('DEBUG', 'ON');
 
-require 'lib/jf/core/core.php';
+require 'lib/jf/core/Core.php';
 
 use lib\jf\Context;
 
