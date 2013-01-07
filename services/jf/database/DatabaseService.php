@@ -3,7 +3,7 @@ namespace services\jf\database;
 
 use lib\jf\Context;
 use lib\jf\core\BaseService;
-use lib\jf\core\Toolkit;
+use lib\jf\core\Utils;
 use services\jf\database\DBKeyNotFoundException;
 
 /**
@@ -27,7 +27,7 @@ class DatabaseService extends BaseService {
 		return $this->connections[$key];
 
 		$cfg = $this->getDBConfig($key);
-		$this->connections[$key] = new \PDO($cfg['dsn'], $cfg['username'], $cfg['password'], Toolkit::array_read($cfg, 'options', null));
+		$this->connections[$key] = new \PDO($cfg['dsn'], $cfg['username'], $cfg['password'], Utils::array_read($cfg, 'options', null));
 
 		return $this->connections[$key];
 	}

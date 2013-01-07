@@ -2,7 +2,7 @@
 namespace lib\jf\core;
 
 use lib\jf\IConfiguration;
-use lib\jf\core\Toolkit;
+use lib\jf\core\Utils;
 
 /**
  * @desc Ans array reader/writer.
@@ -27,7 +27,7 @@ class ArrayConfiguration extends \ArrayIterator implements IConfiguration {
 	 * @return mixed the value of key
 	 */
 	public function getValue($key, $default=null, $ec=null) {
-		return Toolkit::array_read($this, $key, $default, $ec);
+		return Utils::array_read($this, $key, $default, $ec);
 	}
 
 	/**
@@ -37,7 +37,7 @@ class ArrayConfiguration extends \ArrayIterator implements IConfiguration {
 	 * @param mixed $value			value of key
 	 */
 	public function setValue($key, $value) {
-		Toolkit::array_write($this, $key, $value);
+		Utils::array_write($this, $key, $value);
 	}
 
 	/**

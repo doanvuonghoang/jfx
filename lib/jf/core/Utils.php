@@ -6,7 +6,7 @@ namespace lib\jf\core;
  *
  * @author Terry
  */
-class Toolkit {
+class Utils {
 	static function getBestSupportedMimeType($mimeTypes = null) {
 		// Values will be stored in this array
 		$AcceptTypes = Array ();

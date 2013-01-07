@@ -203,7 +203,7 @@ final class Context {
 			if($this->isExtensionExists($extName) !== FALSE) {
 				if($overwrite === FALSE) {
 					throw new \Exception('extension has been already exist: '.$extName);
-				} else core\Toolkit::removeDir($extPath);
+				} else core\Utils::removeDir($extPath);
 			}
 			
 			// otherwise, copy extension files from temp dir to exts dir
@@ -242,7 +242,7 @@ final class Context {
 				$deletePath = dirname($deletePath);
 			}
 			
-			core\Toolkit::removeDir($deletePath);
+			core\Utils::removeDir($deletePath);
 		}
 	}
 }
