@@ -96,7 +96,7 @@ function handleException($exc, $force=false) {
 	if($force === true || empty($handlers)) {
 		header('Status: 500', true, 500);
 		echo "System has been halted by an uncaught exception!";
-		if(defined('DISPLAY_ERROR') && DISPLAY_ERROR == 'ON') {
+		if(defined('DEBUG') && DEBUG == 'ON') {
 			echo '<pre>' . print_r($exc->getMessage(), true) . '</pre>';
 		}
 	} else {
