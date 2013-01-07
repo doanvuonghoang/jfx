@@ -15,7 +15,7 @@ class ApacheProvider implements IRewriteModProvider {
 	
 	function __construct() {
 		$this->htAccessPath = dirname($_SERVER['SCRIPT_FILENAME']);
-		$this->urlCfgFileName = PATH_CONFIG.'/url.cnf.php';
+		$this->urlCfgFileName = JFX_PATH_CONFIG.'/url.cnf.php';
 		$this->urlCfg = \lib\jf\core\ArrayConfiguration::loadFromFile($this->urlCfgFileName);
 		$this->changed = false;
 	}

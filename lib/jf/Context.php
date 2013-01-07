@@ -20,7 +20,7 @@ final class Context {
 	
 	private static $PATH_SERVICES;
 	private static $PATH_EXTS;
-	private static $PATH_TMP;
+	private static $JFX_PATH_TMP;
 
 	/**
 	 * Returns context instance of current request.
@@ -51,9 +51,9 @@ final class Context {
 
 	protected function __construct($cfg) {
 		// @TODO: Config paths
-		self::$PATH_SERVICES = PATH_BASE.'/services';
-		self::$PATH_EXTS = PATH_BASE.'/exts';
-		self::$PATH_TMP = PATH_BASE.'/tmp';
+		self::$PATH_SERVICES = JFX_PATH_BASE.'/services';
+		self::$PATH_EXTS = JFX_PATH_BASE.'/exts';
+		self::$JFX_PATH_TMP = JFX_PATH_BASE.'/tmp';
 		
 		$this->init(ArrayConfiguration::loadFromFile($cfg));
 	}

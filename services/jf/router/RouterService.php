@@ -53,9 +53,9 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 		$isres = $this->getParameter('isres');
 		if($isres == 1) {
 			$ep = $this->getRelativeResourcesPath($this->requestedApp).urldecode($this->getParameter('resp'));
-		} else $ep = PATH_APP."/{$this->getRealAppName($this->requestedApp)}/index.php";
+		} else $ep = JFX_PATH_APP."/{$this->getRealAppName($this->requestedApp)}/index.php";
 		if(!file_exists($ep)) {
-			require PATH_APP."/error/404.php";
+			require JFX_PATH_APP."/error/404.php";
 		} else {
 			if($isres == 1) {
 				$this->getResourceContent($ep);
@@ -94,7 +94,7 @@ class RouterService extends \lib\jf\core\BaseService implements \lib\jf\app\IApp
 	private function getRelativeResourcesPath($appName) {
 		$path = $this->context->getConfiguration()->getValue('routerSettings/app_resource_path/relative');
 		
-		return PATH_APP."/{$this->getRealAppName($appName)}$path";
+		return JFX_PATH_APP."/{$this->getRealAppName($appName)}$path";
 	}
 	
 	private function getResourceContent($filepath) {

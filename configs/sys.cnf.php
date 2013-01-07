@@ -18,7 +18,7 @@ $config = array(
 			'options'  => array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION)
 		),
 //		'session' => array(
-//			'dsn' => 'sqlite:'.PATH_CONFIG.'/session.sql3',
+//			'dsn' => 'sqlite:'.JFX_PATH_CONFIG.'/session.sql3',
 //			'username' => NULL,
 //			'password' => NULL,
 //			'options'  => array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION)

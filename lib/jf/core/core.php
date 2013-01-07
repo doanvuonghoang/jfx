@@ -6,19 +6,19 @@ define('PLATFORM_VERSION', '2.0');
 /**
  * Define path to base directory of platform.
  */
-define('PATH_BASE', realpath(__DIR__.'/../../..'));
+define('JFX_PATH_BASE', realpath(__DIR__.'/../../..'));
 /**
 * Defines app path.
 */
-define('PATH_APP', realpath(PATH_BASE.'/apps'));
+define('JFX_PATH_APP', realpath(JFX_PATH_BASE.'/apps'));
 /**
  * Define path to config directory
  */
-define('PATH_CONFIG', realpath(PATH_BASE.'/configs'));
+define('JFX_PATH_CONFIG', realpath(JFX_PATH_BASE.'/configs'));
 /**
  * Define path to temporary directory of platform.
  */
-define('PATH_TMP', PATH_BASE.'/tmp');
+define('JFX_PATH_TMP', JFX_PATH_BASE.'/tmp');
 
 /**
  * @desc Requires source code in file.
@@ -26,7 +26,7 @@ define('PATH_TMP', PATH_BASE.'/tmp');
  * @param string $className		class name
  */
 function import($className) {
-	require_once PATH_BASE.DIRECTORY_SEPARATOR.str_replace('\\', DIRECTORY_SEPARATOR, $className).'.php';
+	require_once JFX_PATH_BASE.DIRECTORY_SEPARATOR.str_replace('\\', DIRECTORY_SEPARATOR, $className).'.php';
 }
 
 /**
